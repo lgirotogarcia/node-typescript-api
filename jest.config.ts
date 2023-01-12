@@ -1,4 +1,6 @@
-const { resolve } = require('path');
+//Teste unitário
+
+import { resolve } from 'path';
 const root = resolve(__dirname);
 module.exports = {
     rootDir: root, //diretório que esse arquivo se encontra, diretório raiz
@@ -8,7 +10,7 @@ module.exports = {
     clearMocks: true, //vai limpar os mocks(?) por padrão
     preset: 'ts-jest', //pré setado para rodar o ts-jest
     moduleNameMapper: { //para poder usar os alias nos testes do jest
-        '@src/(.*': '<rootDir>/src/$1',
+        '@src/(.*)': '<rootDir>/src/$1',
         '@test/(.*)': '<rootDir>/test/$1'
     }
 };

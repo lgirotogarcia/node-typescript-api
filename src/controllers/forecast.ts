@@ -1,10 +1,12 @@
-/*Forecast é a previsão pra uma hora específica dentro de uma sequencia de parâmetros*/
+import { Controller, Get } from '@overnightjs/core';
+import { Request, Response } from 'express';
 
-describe('Beach forecast functional tests', () => {
-  it('should return a forecast with just a few times', async () => {
-    const { body, status } = await global.testRequest.get('/forecast');
-    expect(status).toBe(200);
-    expect(body).toEqual([
+@Controller('forecast') //cria automaticamente a rota forecast quando a API for inciializada
+export class ForecastController {
+  @Get('') //caso seja feita a fora 'forecast/' será chamado o método abaixo
+  public getForecastForLoggedUser(_: Request, res: Response): void {
+    //o parâmetro req não será usado, então ele poder ser substituído por '_'
+    res.send([
       {
         time: '2020-04-26T00:00:00+00:00',
         forecast: [
@@ -44,5 +46,5 @@ describe('Beach forecast functional tests', () => {
         ],
       },
     ]);
-  });
-});
+  }
+}

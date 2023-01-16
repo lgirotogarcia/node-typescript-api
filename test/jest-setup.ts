@@ -1,3 +1,8 @@
+import { SetupServer } from '@src/server';
+import supertest from 'supertest';
 
-
-/*Forecast é a previsão pra uma hora específica dentro de uma sequencia de parâmetros*/ 
+beforeAll(() => {
+  const server = new SetupServer();
+  server.init();
+  global.testRequest = supertest(server.getApp());
+});
